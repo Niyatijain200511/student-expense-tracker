@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Expense Tracker</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Student Expense Tracker</h1>
+
+    <!-- ADD TRANSACTION -->
+    <div class="section">
+      <h3>Add Transaction</h3>
+
+      <label>Type</label>
+      <select id="typeSelect" onchange="toggleCategoryField()">
+        <option value="expense">Expense</option>
+        <option value="income">Income</option>
+      </select>
+
+      <label>Amount</label>
+      <input type="number" id="amountInput" placeholder="Enter amount">
+
+      <div id="categoryWrapper">
+        <label>Category</label>
+        <select id="categorySelect">
+          <option>Food</option>
+          <option>Transport</option>
+          <option>Education</option>
+          <option>Shopping</option>
+          <option>Entertainment</option>
+          <option>Health</option>
+          <option>Other</option>
+        </select>
+      </div>
+
+      <label>Date</label>
+      <input type="date" id="dateInput">
+
+      <button onclick="addTransaction()">Add Transaction</button>
+    </div>
+
+    <!-- BUDGET -->
+    <div class="section">
+      <h3>Monthly Budget</h3>
+      <input type="number" id="budgetInput" placeholder="Set monthly budget">
+      <button onclick="setBudget()">Save Budget</button>
+      <p id="budgetWarning" class="warning"></p>
+    </div>
+
+    <!-- SEARCH / FILTER -->
+    <div class="section">
+      <h3>Search / Filter</h3>
+      <input type="text" id="searchInput" placeholder="Search category or type" oninput="renderTransactions()">
+    </div>
+
+    <!-- SUMMARY -->
+    <div class="section">
+      <h3>Summary</h3>
+      <p id="totalIncomeDisplay">Total income: ₹0.00</p>
+      <p id="totalExpenseDisplay">Total expenses: ₹0.00</p>
+      <p id="balanceDisplay">Balance: ₹0.00</p>
+    </div>
+
+    <!-- TRANSACTIONS LIST -->
+    <div class="section">
+      <h3>Transactions</h3>
+      <ul id="transactionList"></ul>
+    </div>
+
+    <!-- REPORT -->
+    <div class="section">
+      <h3>Category Report</h3>
+      <ul id="categoryReport"></ul>
+    </div>
+
+    <!-- EXPORT -->
+    <div class="section">
+      <button onclick="exportToCSV()">Export to CSV</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
